@@ -9,6 +9,8 @@
         {# default过滤器不是用来判断空值的，而是用来判断属性是否存在的 #}
         {{ data.name | default('未名') }}
         {{ data.school | default('未名') }}
+        {# length过滤器获取长度 #}
+        {{ data | length() }}
     {% else %}
         {{ data.age }}
     {% endif %}

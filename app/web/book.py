@@ -24,6 +24,8 @@ def search():
         isbn_or_key = is_isbn_or_key(q)
         yushu_book = YuShuBook()
 
+        # Messaging Flash
+        
         if isbn_or_key == 'isbn':            
             yushu_book.search_by_isbn(q)
             # result = YuShuBook.search_by_isbn(q)
