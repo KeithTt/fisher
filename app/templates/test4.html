@@ -1,0 +1,15 @@
+{# 过滤器 #}
+
+{% extends 'layout.html' %}
+{% block content %}
+    {{ super() }}
+    {% if data.age < 18 %}
+        {{ data.age }}
+    {% elif data.age == 18 %}
+        {# default过滤器不是用来判断空值的，而是用来判断属性是否存在的 #}
+        {{ data.name | default('未名') }}
+        {{ data.school | default('未名') }}
+    {% else %}
+        {{ data.age }}
+    {% endif %}
+{% endblock %}
