@@ -47,8 +47,11 @@ def search():
         # return jsonify(form.errors)
         # 使用消息闪现返回错误提示
         flash('搜索的关键字不符合要求，请重新输入关键字')
-    
     return render_template('search_result.html', books=books)
+
+@web.route('/book/<isbn>/detail')
+def book_detail(isbn):
+    pass
 
 @web.route('/test')
 def test():
