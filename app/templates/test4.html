@@ -11,6 +11,9 @@
         {{ data.school | default('未名') }}
         {# length过滤器获取长度 #}
         {{ data | length() }}
+        {# 设置变量，显示变量值 #}
+        {% set messages = get_flashed_messages() %}
+        {{ messages }}
     {% else %}
         {{ data.age }}
     {% endif %}

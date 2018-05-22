@@ -56,6 +56,9 @@ def test():
         'name': '',
         'age': 18
     }
+    # flash可以多次调用，消息闪现的将是一个列表
+    flash('Hello KeithTt', category='error')
+    flash('Hello Jerry', category='warning')
     # 模板 HTML
     # return jsonify(r)
     return render_template('test4.html', data=r,)
