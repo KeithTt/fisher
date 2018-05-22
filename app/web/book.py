@@ -1,5 +1,5 @@
 
-from flask import jsonify, request, render_template
+from flask import jsonify, request, render_template, flash
 from app.forms.book import SearchForm
 from app.web import web
 from app.libs.helper import is_isbn_or_key
@@ -25,7 +25,7 @@ def search():
         yushu_book = YuShuBook()
 
         # Messaging Flash
-        
+
         if isbn_or_key == 'isbn':            
             yushu_book.search_by_isbn(q)
             # result = YuShuBook.search_by_isbn(q)
