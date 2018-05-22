@@ -39,13 +39,16 @@ def search():
         # 这里直接返回的result是一个字典，用json.dumps()序列化这个字典转变为json格式，并指定状态码和content-type
         # return json.dumps(result), 200, {"content-type": "application/json"}
         # return jsonify(books.__dict__)
-        return json.dumps(books, default=lambda o: o.__dict__), 200, {"content-type": "application/json"}
-
+        # 用default参数传递一个函数序列化对象
+        # return json.dumps(books, default=lambda o: o.__dict__), 200, {"content-type": "application/json"}
     else:
         # return jsonify({'msg': '参数校验失败'})
         # 使用form的errors属性返回错误信息
-        return jsonify(form.errors)
-
+        # return jsonify(form.errors)
+        # 使用消息闪现返回错误提示
+        flash('搜索的关键字不符合要求，请重新输入关键字')
+    
+    return render_template('search_result.html', books=books)
 
 @web.route('/test')
 def test():
