@@ -21,7 +21,7 @@ def register():
         db.session.add(user)
         db.session.commit()
     # 返回注册页面
-    return render_template('auth/register.html', form={'data': {}})
+    return render_template('auth/register.html', form=form)
 
 
 @web.route('/login', methods=['GET', 'POST'])
