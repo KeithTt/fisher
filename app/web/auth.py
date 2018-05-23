@@ -1,11 +1,24 @@
+from app.forms.auth import RegisterForm
+from app.models.user import User
 from . import web
+from flask import render_template, request
 
-__author__ = '七月'
+__author__ = 'KeithTt'
 
 
 @web.route('/register', methods=['GET', 'POST'])
 def register():
-    pass
+    '''
+    http://localhost:8088/register
+    '''
+    # 获取POST提交的表单信息 request.form
+    form = RegisterForm(request.form)
+    if request.method == 'POST' and form.validate():
+        user = User()
+        # form.data包含表单上传的所有数据
+        user.set_attrs(form.data)
+    # 返回注册页面
+    return render_template('auth/register.html', form={'data': {}})
 
 
 @web.route('/login', methods=['GET', 'POST'])

@@ -5,8 +5,8 @@
 # 正整数，最大值限制
 # page = request.args['page']
 
-from wtforms import Form,StringField,IntegerField
-from wtforms.validators import Length, NumberRange,DataRequired
+from wtforms import Form, StringField, IntegerField
+from wtforms.validators import Length, NumberRange, DataRequired
 
 # 继承Form基类
 class SearchForm(Form):

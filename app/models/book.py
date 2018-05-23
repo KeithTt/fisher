@@ -6,7 +6,7 @@
 # pip3 install flask-sqlalchemy
 
 from sqlalchemy import Column, Integer, String
-from app.models.base import db
+from app.models.base import db, Base
 
 class Book(Base):
     # 整数类型，设置为主键，自增长
