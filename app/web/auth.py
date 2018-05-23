@@ -1,4 +1,5 @@
 from app.forms.auth import RegisterForm
+from app.models.base import db
 from app.models.user import User
 from . import web
 from flask import render_template, request
@@ -17,6 +18,8 @@ def register():
         user = User()
         # form.data包含表单上传的所有数据
         user.set_attrs(form.data)
+        db.session.add(user)
+        db.session.commit()
     # 返回注册页面
     return render_template('auth/register.html', form={'data': {}})
 
