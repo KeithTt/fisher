@@ -6,14 +6,9 @@
 # pip3 install flask-sqlalchemy
 
 from sqlalchemy import Column, Integer, String
-from flask_sqlalchemy import SQLAlchemy
+from app.models.base import db
 
-__author__ = 'KeithTt'
-
-# 实例化一个对象
-db = SQLAlchemy()
-
-class Book(db.Model):
+class Book(Base):
     # 整数类型，设置为主键，自增长
     id = Column(Integer, primary_key=True, autoincrement=True)
     # 字符串类型，长度为50，不能为空
