@@ -4,8 +4,13 @@ from sqlalchemy import Column, Integer, String, Boolean, Float
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from app import login_manager
+from app.libs.helper import is_isbn_or_key
 from app.models.base import Base
 from flask_login import UserMixin
+
+from app.models.gift import Gift
+from app.models.wish import Wish
+from app.spider.yushu_book import YuShuBook
 
 __author__ = 'KeithTt'
 
@@ -20,6 +25,7 @@ class User(UserMixin, Base):
     _password = Column('password', String(128), nullable=False)
     email = Column(String(50), unique=True, nullable=False)
     confirmed = Column(Boolean, default=False)
+    # 鱼豆
     beans = Column(Float, default=0)
     send_counter = Column(Integer, default=0)
     receive_counter = Column(Integer, default=0)
@@ -44,8 +50,26 @@ class User(UserMixin, Base):
     # def get_id(self):
     #     return self.id
 
+    def can_save_to_list(self, isbn):
+        # 检查isbn是否符合规范
+        if is_isbn_or_key(isbn) != 'isbn':
+            return False
+        yushu_book = YuShuBook()
+        # 查询API中是否存在这个isbn
+        yushu_book.search_by_isbn(isbn)
+        if not yushu_book.first:
+            return False
+        # 不允许一个用户同时赠送多本相同的书
+        # 对于同一本书，一个用户不可能同时成为赠送者和索要者
+        gifting = Gift.query.filter_by(uid=self.id, isbn=isbn, launched=False).first()
+        wishing = Wish.query.filter_by(uid=self.id, isbn=isbn, launched=False).first()
+        # 既不在赠送清单，也不在心愿清单才能添加
+        if not gifting and not wishing:
+            return True
+        else:
+            return False
 
-# 返回用户模型
+# 通过uid返回用户模型
 @login_manager.user_loader
 def get_user(uid):
     return User.query.get(str(uid))

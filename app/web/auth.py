@@ -41,7 +41,7 @@ def login():
             login_user(user, remember=True)
             # 获取next的查询参数
             next = request.args.get('next')
-            if not next and not next.startswith('/'):
+            if not next or not next.startswith('/'):
                 next = url_for('web.index')
             # 登陆成功后跳转返回到之前的页面
             return redirect(next)

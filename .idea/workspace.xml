@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="45a48b53-208a-4350-8443-e64d3d5adb67" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/forms/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/forms/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/keithtt.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/keithtt.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/gift.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/gift.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/setting.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/setting.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/web/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/web/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/web/gift.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/web/gift.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -56,13 +57,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gift.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="gift.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/web/gift.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+            <state relative-caret-position="473">
+              <caret line="28" column="56" lean-forward="true" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="56" />
               <folding>
-                <element signature="e#1#18#0" expanded="true" />
+                <element signature="e#0#29#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -92,15 +93,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="user.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/user.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="49" column="14" lean-forward="true" selection-start-line="49" selection-start-column="14" selection-end-line="49" selection-end-column="14" />
+            <state relative-caret-position="623">
+              <caret line="69" column="24" selection-start-line="69" selection-start-column="24" selection-end-line="69" selection-end-column="24" />
               <folding>
                 <element signature="e#28#90#0" expanded="true" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="yushu_book.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/spider/yushu_book.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-94" />
           </provider>
         </entry>
       </file>
@@ -131,9 +139,9 @@
         <option value="$PROJECT_DIR$/app/models/base.py" />
         <option value="$PROJECT_DIR$/app/forms/auth.py" />
         <option value="$PROJECT_DIR$/app/__init__.py" />
-        <option value="$PROJECT_DIR$/app/models/user.py" />
         <option value="$PROJECT_DIR$/app/web/auth.py" />
         <option value="$PROJECT_DIR$/app/web/gift.py" />
+        <option value="$PROJECT_DIR$/app/models/user.py" />
       </list>
     </option>
   </component>
@@ -180,6 +188,12 @@
               <item name="fisher" type="cbb8eebc:String" user="fisher" />
               <item name="app" type="cbb8eebc:String" user="app" />
               <item name="models" type="cbb8eebc:String" user="models" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="fisher" type="cbb8eebc:String" user="fisher" />
+              <item name="app" type="cbb8eebc:String" user="app" />
+              <item name="spider" type="cbb8eebc:String" user="spider" />
             </path>
             <path>
               <item name="Root" type="cbb8eebc:String" user="Root" />
@@ -439,16 +453,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/user.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="49" column="14" lean-forward="true" selection-start-line="49" selection-start-column="14" selection-end-line="49" selection-end-column="14" />
-          <folding>
-            <element signature="e#28#90#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/web/auth.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -461,10 +465,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/web/gift.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+        <state relative-caret-position="473">
+          <caret line="28" column="56" lean-forward="true" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="56" />
           <folding>
-            <element signature="e#1#18#0" expanded="true" />
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/spider/yushu_book.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-94" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/user.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="623">
+          <caret line="69" column="24" selection-start-line="69" selection-start-column="24" selection-end-line="69" selection-end-column="24" />
+          <folding>
+            <element signature="e#28#90#0" expanded="true" />
           </folding>
         </state>
       </provider>

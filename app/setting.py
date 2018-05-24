@@ -1,3 +1,5 @@
 # 通用配置
 
 PER_PAGE = 20
+
+BEANS_UPLODAD_ONE_BOOK = 0.5
