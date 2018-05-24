@@ -3,6 +3,10 @@ __author__ = 'KeithTt'
 
 from flask import Flask
 from app.models.book import db
+from flask_login import LoginManager
+
+# 实例化登陆管理器，该插件用于管理cookie
+login_manager = LoginManager()
 
 def create_app():
     # 实例化核心对象
@@ -18,6 +22,12 @@ def create_app():
     db.init_app(app)
     # 把数据模型映射到数据库里去
     db.create_all(app=app)
+    # 关联登录管理器到核心对象
+    login_manager.init_app(app)
+    # 自动跳转到登陆页面
+    login_manager.login_view = 'web.login'
+    # 自定义未登录提示
+    login_manager.login_message = '请先注册登陆'
     return app
 
 # 把蓝图注册到app核心对象
