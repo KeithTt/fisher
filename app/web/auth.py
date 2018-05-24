@@ -16,11 +16,12 @@ def register():
     # 获取POST提交的表单信息 request.form
     form = RegisterForm(request.form)
     if request.method == 'POST' and form.validate():
-        user = User()
-        # form.data包含表单上传的所有数据
-        user.set_attrs(form.data)
-        db.session.add(user)
-        db.session.commit()
+        with db.auto_commit():
+            user = User()
+            # form.data包含表单上传的所有数据
+            user.set_attrs(form.data)
+            db.session.add(user)
+            # db.session.commit()
         # 注册成功之后跳转到登陆页面
         return redirect(url_for('web.login'))
     # 返回注册页面

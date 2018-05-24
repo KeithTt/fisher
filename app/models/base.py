@@ -1,8 +1,21 @@
+from contextlib import contextmanager
 
 __author__ = 'KeithTt'
 
-from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy as _SQLAlchemy
 from sqlalchemy import Column, SmallInteger
+
+# 定义一个子类，继承父类
+class SQLAlchemy(_SQLAlchemy):
+    @contextmanager
+    def auto_commit(self):
+        try:
+            yield
+            self.session.commit()
+        except Exception as e:
+            self.session.rollback()
+            raise e
+
 
 # 实例化一个对象
 db = SQLAlchemy()
