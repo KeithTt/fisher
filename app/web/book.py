@@ -1,6 +1,8 @@
 
 from flask import jsonify, request, render_template, flash
 from app.forms.book import SearchForm
+from app.models.gift import Gift
+from app.models.wish import Wish
 from app.web import web
 from app.libs.helper import is_isbn_or_key
 from app.spider.yushu_book import YuShuBook
@@ -51,9 +53,19 @@ def search():
 
 @web.route('/book/<isbn>/detail')
 def book_detail(isbn):
+    has_in_gifts = False
+    has_in_wishes = False
+
+    # 取书籍的详情数据
     yushu_book = YuShuBook()
     yushu_book.search_by_isbn(isbn)
     book = BookViewModel(yushu_book.first)
+
+    # 查询出所有赠送者的信息
+    trade_gifts = Gift.query.filter_by(isbn=isbn, launched=False).all()
+    # 查询出所有索要者的信息
+    trade_wishes = Wish.query.filter_by(isbn=isbn, launched=False).all()
+
     return render_template('book_detail.html', book=book, wishes=[], gifts=[])
 
 @web.route('/test')

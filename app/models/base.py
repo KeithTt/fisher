@@ -1,9 +1,10 @@
 from contextlib import contextmanager
+from datetime import datetime
 
 __author__ = 'KeithTt'
 
 from flask_sqlalchemy import SQLAlchemy as _SQLAlchemy
-from sqlalchemy import Column, SmallInteger
+from sqlalchemy import Column, SmallInteger, Integer
 
 # 定义一个子类，继承父类
 class SQLAlchemy(_SQLAlchemy):
@@ -24,9 +25,13 @@ db = SQLAlchemy()
 class Base(db.Model):
     # 不创建Base表，让Base模型仅作为基类模型
     __abstract__ = True
-    # create_time = Column('create_time', Integer)
+    create_time = Column('create_time', Integer)
     # 定义一个status属性控制数据是否被删除，默认为1表示不删除
     status = Column(SmallInteger, default=1)
+
+    def __init__(self):
+        # 将执行时间赋值给create_time
+        self.create_time = int(datetime.now().timestamp())
 
     def set_attrs(self, attrs_dict):
         for key, value in attrs_dict.items():
