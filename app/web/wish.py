@@ -5,7 +5,7 @@ from app.models.base import db
 from app.models.wish import Wish
 from . import web
 
-__author__ = '七月'
+__author__ = 'KeithTt'
 
 
 @web.route('/my/wish')

@@ -38,6 +38,7 @@ class BookCollection:
         self.keyword = keyword
         self.books = [BookViewModel(book) for book in yushu_book.books]
 
+
 class _BookViewModel:
     # 描述特征（类变量、实例变量）
     # 行为（方法）
