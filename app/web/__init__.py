@@ -1,4 +1,3 @@
-
 from flask import Blueprint
 
 __author__ = 'KeithTt'

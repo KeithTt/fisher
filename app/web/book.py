@@ -1,4 +1,3 @@
-
 from flask import jsonify, request, render_template, flash
 from flask_login import current_user
 
@@ -10,6 +9,8 @@ from app.web import web
 from app.libs.helper import is_isbn_or_key
 from app.spider.yushu_book import YuShuBook
 from app.view_models.book import BookViewModel, BookCollection
+
+
 # import json
 
 # 使用蓝图注册视图函数
@@ -31,7 +32,7 @@ def search():
 
         # Messaging Flash
 
-        if isbn_or_key == 'isbn':            
+        if isbn_or_key == 'isbn':
             yushu_book.search_by_isbn(q)
             # result = YuShuBook.search_by_isbn(q)
             # result = BookViewModel.package_single(result, q)
@@ -84,7 +85,6 @@ def book_detail(isbn):
                            book=book,
                            wishes=trade_wishes_model, gifts=trade_gifts_model,
                            has_in_gifts=has_in_gifts, has_in_wishes=has_in_wishes)
-
 
 # @web.route('/test')
 # def test():
