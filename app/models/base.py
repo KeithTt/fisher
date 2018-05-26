@@ -4,7 +4,7 @@ from datetime import datetime
 
 __author__ = 'KeithTt'
 
-from flask_sqlalchemy import SQLAlchemy as _SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy as _SQLAlchemy, BaseQuery
 from sqlalchemy import Column, SmallInteger, Integer
 
 # 定义一个子类，继承父类
@@ -18,9 +18,17 @@ class SQLAlchemy(_SQLAlchemy):
             self.session.rollback()
             raise e
 
+# 重写filter_by函数
+class Query(BaseQuery):
+    def filter_by(self, **kwargs):
+        if 'status' not in kwargs.keys():
+            kwargs['status'] = 1
+        # 实现原有的filter_by的逻辑
+        return super(Query, self).filter_by(**kwargs)
 
 # 实例化一个对象
-db = SQLAlchemy()
+db = SQLAlchemy(query_class=Query)
+
 
 # 定义一个基类模型，在基类模型里面继承db.Model，其他模型继承Base
 class Base(db.Model):
