@@ -1,4 +1,4 @@
-from app.forms.auth import RegisterForm, LoginForm
+from app.forms.auth import RegisterForm, LoginForm, EmailForm
 from app.models.base import db
 from app.models.user import User
 from . import web
@@ -10,9 +10,9 @@ __author__ = 'KeithTt'
 
 @web.route('/register', methods=['GET', 'POST'])
 def register():
-    '''
+    """
     http://localhost:8088/register
-    '''
+    """
     # 获取POST提交的表单信息 request.form
     form = RegisterForm(request.form)
     if request.method == 'POST' and form.validate():
@@ -53,7 +53,12 @@ def login():
 
 @web.route('/reset/password', methods=['GET', 'POST'])
 def forget_password_request():
-    pass
+    form = EmailForm(request.form)
+    if request.method == 'POST':
+        if form.validate():
+            account_email = form.email.data
+            user = User.query.filter_by(email=account_email).first_or_404()
+    return render_template('auth/forget_password_request.html')
 
 
 @web.route('/reset/password/<token>', methods=['GET', 'POST'])
