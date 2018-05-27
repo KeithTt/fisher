@@ -1,4 +1,3 @@
-
 # 拆分配置文件
 
 DEBUG = True
@@ -7,3 +6,11 @@ DEBUG = True
 SQLALCHEMY_DATABASE_URI = 'mysql+cymysql://root:dellXdell@localhost:3306/fisher'
 
 SECRET_KEY = 'randomkey'
+
+# Email配置
+MAIL_SERVER = 'smtp.qq.com'
+MAIL_PORT = 465
+MAIL_USE_SSL = True
+MAIL_USE_TSL = False
+MAIL_USERNAME = 'keithtt@vip.qq.com'
+MAIL_PASSWORD = 'tduvlgixzgwccbch'
