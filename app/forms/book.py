@@ -8,6 +8,7 @@
 from wtforms import Form, StringField, IntegerField
 from wtforms.validators import Length, NumberRange, DataRequired
 
+
 # 继承Form基类
 class SearchForm(Form):
     # 校验q的长度

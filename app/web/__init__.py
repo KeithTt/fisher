@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
 
 __author__ = 'KeithTt'
 
@@ -7,6 +7,14 @@ __author__ = 'KeithTt'
 
 # 创建一个蓝图
 web = Blueprint('web', __name__)
+
+
+# 监控所有404HTTP异常，并返回指定页面
+@web.app_errorhandler(404)
+def not_found(e):
+    # AOP思想
+    return render_template('404.html'), 404
+
 
 from app.web import book
 from app.web import auth
