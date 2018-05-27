@@ -1,11 +1,12 @@
 # pip3 install flask_login
-
+from flask import current_app
 from sqlalchemy import Column, Integer, String, Boolean, Float
 from werkzeug.security import generate_password_hash, check_password_hash
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
 from app import login_manager
 from app.libs.helper import is_isbn_or_key
-from app.models.base import Base
+from app.models.base import Base, db
 from flask_login import UserMixin
 
 from app.models.gift import Gift
@@ -21,7 +22,7 @@ class User(UserMixin, Base):
     id = Column(Integer, primary_key=True)
     nickname = Column(String(24), nullable=False)
     phone_number = Column(String(18), unique=True)
-    # 在方法里面传递一个字符串，自定义字段名
+    # 在方法里面传递一个字符串，重命名字段名
     _password = Column('password', String(128), nullable=False)
     email = Column(String(50), unique=True, nullable=False)
     confirmed = Column(Boolean, default=False)
@@ -68,6 +69,28 @@ class User(UserMixin, Base):
             return True
         else:
             return False
+
+    def generate_token(self, expiration=600):
+        s = Serializer(current_app.config['SECRET_KEY'], expiration)
+        # 写入用户信息到序列化器 二进制解码为普通字符串
+        return s.dumps({'id': self.id}).decode('utf-8')
+
+    @staticmethod
+    def reset_password(token, new_password):
+        # 读取用户信息 反序列化
+        s = Serializer(current_app.config['SECRET_KEY'])
+        try:
+            data = s.loads(token.encode('utf-8'))
+        except:
+            return False
+        uid = data.get('id')
+        # 执行修改密码
+        with db.auto_commit():
+            # 通过主键获取用户模型
+            user = User.query.get(uid)
+            user.password = new_password
+        return True
+
 
 # 通过uid返回用户模型
 @login_manager.user_loader
