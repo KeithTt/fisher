@@ -1,10 +1,15 @@
+from collections import namedtuple
+
 from flask import current_app
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, desc
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, desc, func
 from app.models.base import db, Base
 from sqlalchemy.orm import relationship
 
+from app.models.wish import Wish
 from app.spider.yushu_book import YuShuBook
 
+
+# EachGiftWishCount = namedtuple('EachGiftWishCount', ['count', 'isbn'])
 
 class Gift(Base):
     id = Column(Integer, primary_key=True)
@@ -14,6 +19,22 @@ class Gift(Base):
     # 是否被赠送出去
     launched = Column(Boolean, default=False)
 
+    @classmethod
+    def get_user_gifts(cls, uid):
+        gifts = Gift.query.filter_by(uid=uid, launched=False).order_by(desc(Gift.create_time)).all()
+        return gifts
+
+    @classmethod
+    def get_wish_counts(cls, isbn_list):
+        # 分组统计 func+group_by
+        count_list = db.session.query(func.count(Wish.id), Wish.isbn).filter(
+            Wish.launched == False,
+            Wish.isbn.in_(isbn_list),
+            Wish.status == 1).group_by(Wish.isbn).all()
+        # 上面返回的结果是一个元祖列表，这里将结果转换成字典列表
+        count_list = [{'count': w[0], 'isbn': w[1]} for w in count_list]
+        return count_list
+
     @property
     def book(self):
         yushu_book = YuShuBook()
@@ -22,6 +43,7 @@ class Gift(Base):
 
     # 实例代表一个具体的对象
     # 类代表一种抽象的事物
+    # 查询最近上传的图书
     @classmethod
     def recent(cls):
         """

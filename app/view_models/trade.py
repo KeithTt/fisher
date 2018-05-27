@@ -1,4 +1,3 @@
-
 class TradeInfo:
     def __init__(self, goods):
         self.total = 0
@@ -15,7 +14,7 @@ class TradeInfo:
     def __map_to_trade(self, single):
         # 格式化时间
         if single.create_time:
-            time = single.create_time.strtime('%Y-%m-%d')
+            time = single.create_datetime.strftime('%Y-%m-%d')
         else:
             time = '未知'
         return dict(
