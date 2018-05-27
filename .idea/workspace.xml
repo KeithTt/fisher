@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="45a48b53-208a-4350-8443-e64d3d5adb67" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/app/libs/email.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/keithtt.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/keithtt.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/secure.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/secure.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/web/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/web/auth.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,8 +22,8 @@
       <file leaf-file-name="auth.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/web/auth.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="61" column="97" selection-start-line="61" selection-start-column="97" selection-end-line="61" selection-end-column="97" />
+            <state relative-caret-position="472">
+              <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
               <folding>
                 <element signature="e#0#61#0" expanded="true" />
               </folding>
@@ -37,7 +31,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reset_password.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="reset_password.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/templates/email/reset_password.html">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
@@ -52,6 +46,20 @@
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="exclude" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.git/info/exclude">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="secure.py" pinned="false" current-in-tab="false">
@@ -130,10 +138,10 @@
         <option value="$PROJECT_DIR$/app/forms/book.py" />
         <option value="$PROJECT_DIR$/app/web/__init__.py" />
         <option value="$PROJECT_DIR$/app/__init__.py" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/app/web/auth.py" />
         <option value="$PROJECT_DIR$/app/secure.py" />
         <option value="$PROJECT_DIR$/app/libs/email.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -178,25 +186,6 @@
               <item name="Root" type="cbb8eebc:String" user="Root" />
               <item name="fisher" type="cbb8eebc:String" user="fisher" />
               <item name="app" type="cbb8eebc:String" user="app" />
-              <item name="libs" type="cbb8eebc:String" user="libs" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="fisher" type="cbb8eebc:String" user="fisher" />
-              <item name="app" type="cbb8eebc:String" user="app" />
-              <item name="templates" type="cbb8eebc:String" user="templates" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="fisher" type="cbb8eebc:String" user="fisher" />
-              <item name="app" type="cbb8eebc:String" user="app" />
-              <item name="templates" type="cbb8eebc:String" user="templates" />
-              <item name="email" type="cbb8eebc:String" user="email" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="fisher" type="cbb8eebc:String" user="fisher" />
-              <item name="app" type="cbb8eebc:String" user="app" />
               <item name="web" type="cbb8eebc:String" user="web" />
             </path>
           </expand>
@@ -209,7 +198,7 @@
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="au&#9;FILE&#9;file:///Users/keithtt/owncloud/python/mooc/fisher/app/web/auth.py" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="add_unversioned_files" value="$PROJECT_DIR$/app/secure.py&#10;true" />
+    <property name="add_unversioned_files" value="true" />
     <property name="node.js.path.for.package.stylelint" value="project" />
     <property name="node.js.selected.package.stylelint" value="" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -632,16 +621,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.git/info/exclude">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="447">
@@ -656,10 +635,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/email/reset_password.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/web/auth.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="61" column="97" selection-start-line="61" selection-start-column="97" selection-end-line="61" selection-end-column="97" />
+        <state relative-caret-position="472">
+          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
           <folding>
             <element signature="e#0#61#0" expanded="true" />
           </folding>
@@ -676,8 +658,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/email/reset_password.html">
+    <entry file="file://$PROJECT_DIR$/.git/info/exclude">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
     </entry>
   </component>
   <component name="masterDetails">

@@ -1,10 +1,10 @@
 # Created by .ignore support plugin (hsz.mobi)
 
-/app/secure.py
-/app/__pycache__
-/app/forms/__pycache__
-/app/libs/__pycache__
-/app/models/__pycache__
-/app/spider/__pycache__
-/app/view_models/__pycache__
-/app/web/__pycache__
+app/secure.py
+app/__pycache__
+app/forms/__pycache__
+app/libs/__pycache__
+app/models/__pycache__
+app/spider/__pycache__
+app/view_models/__pycache__
+app/web/__pycache__
