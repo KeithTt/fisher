@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/fisher.iml" filepath="$PROJECT_DIR$/.idea/fisher.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../kubernetes/mooc/.idea/mooc.iml" filepath="$PROJECT_DIR$/../../../kubernetes/mooc/.idea/mooc.iml" />
     </modules>
   </component>
 </project>

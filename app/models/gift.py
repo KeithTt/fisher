@@ -16,6 +16,9 @@ class Gift(Base):
     # 是否被赠送出去
     launched = Column(Boolean, default=False)
 
+    def is_yourself_gift(self, uid):
+        return True if self.uid == uid else False
+
     @classmethod
     def get_user_gifts(cls, uid):
         gifts = Gift.query.filter_by(uid=uid, launched=False).order_by(desc(Gift.create_time)).all()
