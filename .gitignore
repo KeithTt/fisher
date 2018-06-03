@@ -1,16 +1,17 @@
 # Created by .ignore support plugin (hsz.mobi)
 
 app/secure.py
-app/__pycache__
-app/forms/__pycache__
-app/libs/__pycache__
-app/models/__pycache__
-app/spider/__pycache__
-app/view_models/__pycache__
-app/web/__pycache__
-app/templates/.DS_Store
-app/.DS_Store
 .idea
+app/.DS_Store
 app/forms/.DS_Store
 app/libs/.DS_Store
 app/spider/.DS_Store
+app/templates/.DS_Store
+app/templates/email/.DS_Store
+app/forms/__pycache__
+app/view_models/__pycache__
+app/web/__pycache__
+app/models/__pycache__
+app/__pycache__
+app/libs/__pycache__
+app/spider/__pycache__
