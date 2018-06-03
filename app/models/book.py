@@ -8,6 +8,7 @@
 from sqlalchemy import Column, Integer, String
 from app.models.base import db, Base
 
+
 class Book(Base):
     # 整数类型，设置为主键，自增长
     id = Column(Integer, primary_key=True, autoincrement=True)

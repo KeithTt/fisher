@@ -14,7 +14,7 @@ from app.view_models.book import BookViewModel
 from app.view_models.drift import DriftCollection
 from . import web
 
-__author__ = '七月'
+__author__ = 'KeithTt'
 
 
 @web.route('/drift/<int:gid>', methods=['GET', 'POST'])
