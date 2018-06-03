@@ -2,7 +2,6 @@ from flask import current_app
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, desc, func
 from app.models.base import db, Base
 from sqlalchemy.orm import relationship
-
 from app.spider.yushu_book import YuShuBook
 
 
