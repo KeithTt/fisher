@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../../docker/docker-k8s-devops/chapter6/labs/example-voting-app/.idea/example-voting-app.iml" filepath="$PROJECT_DIR$/../../../docker/docker-k8s-devops/chapter6/labs/example-voting-app/.idea/example-voting-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/fisher.iml" filepath="$PROJECT_DIR$/.idea/fisher.iml" />
     </modules>
   </component>
