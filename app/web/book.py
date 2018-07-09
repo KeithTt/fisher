@@ -14,7 +14,7 @@ from app.view_models.book import BookViewModel, BookCollection
 # import json
 
 # 使用蓝图注册视图函数
-@web.route('/book/search/')
+@web.route('/book/search')
 def search():
     """
     http://localhost:8088/book/search/?q=红楼梦&page=1
