@@ -43,4 +43,5 @@ new_t.start()
 t = threading.current_thread()
 # 打印线程名称
 print(t.getName())
+# print(t.name)
 # MainThread
