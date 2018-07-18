@@ -34,6 +34,8 @@ def worker():
 # 启动线程，如果是多线程，这里并不会停顿下来等待work()函数执行完
 new_t = threading.Thread(target=worker, name='kt_thread')
 new_t.start()
+# I am a thread.
+# kt_thread
 
 # 直接调用worker函数，测试单线程，这里会停顿下来
 # worker()
@@ -41,3 +43,4 @@ new_t.start()
 t = threading.current_thread()
 # 打印线程名称
 print(t.getName())
+# MainThread

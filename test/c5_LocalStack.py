@@ -1,4 +1,3 @@
-
 from werkzeug.local import LocalStack
 
 # push、pop、top
