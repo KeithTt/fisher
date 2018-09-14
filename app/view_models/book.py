@@ -7,8 +7,6 @@
 # http://localhost:8088/book/search/?q=9787070511209
 # http://localhost:8088/book/search/?q=红楼梦
 
-__author__ = 'KeithTt'
-
 
 class BookViewModel:
     def __init__(self, book):
