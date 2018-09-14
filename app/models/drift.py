@@ -1,11 +1,7 @@
-from app.libs.enums import PendingStatus
-
-__author__ = 'KeithTt'
-
 # from app.libs.enums import PendingStatus
-from sqlalchemy import Column, String, Integer, ForeignKey, SmallInteger
-from sqlalchemy.orm import relationship
-from app.models.base import Base
+from sqlalchemy import Column, String, Integer, SmallInteger
+from fisher.app.libs.enums import PendingStatus
+from fisher.app.models.base import Base
 
 
 class Drift(Base):

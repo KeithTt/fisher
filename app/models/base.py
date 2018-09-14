@@ -1,8 +1,5 @@
 from contextlib import contextmanager
 from datetime import datetime
-
-__author__ = 'KeithTt'
-
 from flask_sqlalchemy import SQLAlchemy as _SQLAlchemy, BaseQuery
 from sqlalchemy import Column, SmallInteger, Integer
 

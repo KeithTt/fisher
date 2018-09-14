@@ -1,10 +1,8 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, desc, func
-from app.models.base import db, Base
+from fisher.app.models.base import db, Base
 from sqlalchemy.orm import relationship
-
-from app.spider.yushu_book import YuShuBook
-
-__author__ = 'KeithTt'
+from fisher.app.models.gift import Gift
+from fisher.app.spider.yushu_book import YuShuBook
 
 
 class Wish(Base):
@@ -25,7 +23,6 @@ class Wish(Base):
 
     @classmethod
     def get_gift_counts(cls, isbn_list):
-        from app.models.gift import Gift
         # 分组统计 func+group_by
         count_list = db.session.query(func.count(Gift.id), Gift.isbn).filter(
             Gift.launched == False,
