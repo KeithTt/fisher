@@ -86,8 +86,8 @@ def book_detail(isbn):
                            wishes=trade_wishes_model, gifts=trade_gifts_model,
                            has_in_gifts=has_in_gifts, has_in_wishes=has_in_wishes)
 
-# @web.route('/test')
-# def test():
+# @web.route('/mod')
+# def mod():
 #     """
 #     http://localhost:8088/test
 #     """
