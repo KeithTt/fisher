@@ -1,16 +1,12 @@
 from flask_mail import Mail
-
-__author__ = 'KeithTt'
-
+from app.models.base import db
 from flask import Flask
-from app.models.book import db
 from flask_login import LoginManager
 
 # 实例化登陆管理器，该插件用于管理cookie
 login_manager = LoginManager()
 
 mail = Mail()
-
 
 def create_app():
     # 实例化核心对象
@@ -35,7 +31,6 @@ def create_app():
     # 注册email插件
     mail.init_app(app)
     return app
-
 
 # 把蓝图注册到app核心对象
 def register_blueprint(app):

@@ -17,9 +17,8 @@ from fisher.app.models.gift import Gift
 from fisher.app.models.wish import Wish
 from fisher.app.spider.yushu_book import YuShuBook
 
-
 class User(UserMixin, Base):
-    # 默认情况下，sqlalchemy会用类名创建表名，可以使用内置方法__tablename__自定义表名
+    # 默认情况下，sqlalchemy会用类名创建表名，可以使用内置属性__tablename__自定义表名
     # __tablename__ = 'user1'
     id = Column(Integer, primary_key=True)
     nickname = Column(String(24), nullable=False)
