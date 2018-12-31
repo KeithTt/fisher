@@ -1,8 +1,8 @@
 from flask import current_app
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, desc, func
-from fisher.app.models.base import db, Base
+from app.models.base import db, Base
 from sqlalchemy.orm import relationship
-from fisher.app.spider.yushu_book import YuShuBook
+from app.spider.yushu_book import YuShuBook
 
 # EachGiftWishCount = namedtuple('EachGiftWishCount', ['count', 'isbn'])
 
@@ -24,7 +24,7 @@ class Gift(Base):
 
     @classmethod
     def get_wish_counts(cls, isbn_list):
-        from fisher.app.models.wish import Wish
+        from app.models.wish import Wish
         # 分组统计 func+group_by
         count_list = db.session.query(func.count(Wish.id), Wish.isbn).filter(
             Wish.launched == False,

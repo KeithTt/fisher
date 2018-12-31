@@ -1,8 +1,8 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, desc, func
-from fisher.app.models.base import db, Base
+from app.models.base import db, Base
 from sqlalchemy.orm import relationship
-from fisher.app.models.gift import Gift
-from fisher.app.spider.yushu_book import YuShuBook
+from app.models.gift import Gift
+from app.spider.yushu_book import YuShuBook
 
 
 class Wish(Base):

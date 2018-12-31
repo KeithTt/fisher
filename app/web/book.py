@@ -11,8 +11,6 @@ from app.spider.yushu_book import YuShuBook
 from app.view_models.book import BookViewModel, BookCollection
 
 
-# import json
-
 # 使用蓝图注册视图函数
 @web.route('/book/search')
 def search():
@@ -31,7 +29,6 @@ def search():
         yushu_book = YuShuBook()
 
         # Messaging Flash
-
         if isbn_or_key == 'isbn':
             yushu_book.search_by_isbn(q)
             # result = YuShuBook.search_by_isbn(q)

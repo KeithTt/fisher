@@ -6,16 +6,16 @@ from sqlalchemy import Column, Integer, String, Boolean, Float
 from werkzeug.security import generate_password_hash, check_password_hash
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
-from fisher.app import login_manager
-from fisher.app.libs.enums import PendingStatus
-from fisher.app.libs.helper import is_isbn_or_key
-from fisher.app.models.base import Base, db
+from app import login_manager
+from app.libs.enums import PendingStatus
+from app.libs.helper import is_isbn_or_key
+from app.models.base import Base, db
 from flask_login import UserMixin
 
-from fisher.app.models.drift import Drift
-from fisher.app.models.gift import Gift
-from fisher.app.models.wish import Wish
-from fisher.app.spider.yushu_book import YuShuBook
+from app.models.drift import Drift
+from app.models.gift import Gift
+from app.models.wish import Wish
+from app.spider.yushu_book import YuShuBook
 
 class User(UserMixin, Base):
     # 默认情况下，sqlalchemy会用类名创建表名，可以使用内置属性__tablename__自定义表名

@@ -1,9 +1,6 @@
 from wtforms import Form, StringField, PasswordField
 from wtforms.validators import Length, Email, DataRequired, ValidationError, EqualTo
-
 from app.models.user import User
-
-__author__ = 'KeithTt'
 
 
 class RegisterForm(Form):
