@@ -4,8 +4,6 @@ from app.models.gift import Gift
 from app.view_models.book import BookViewModel
 from . import web
 
-__author__ = '七月'
-
 
 # 首页显示最近上传的礼物
 @web.route('/')

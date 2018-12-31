@@ -1,5 +1,3 @@
-__author__ = 'KeithTt'
-
 from enum import Enum
 
 

@@ -7,8 +7,6 @@ from flask_mail import Message
 
 from app import mail
 
-__author__ = 'KeithTt'
-
 
 def send_mail(to, subject, template, **kwargs):
     # msg = Message('测试邮件', sender='KeithTt@vip.qq.com', body='Flask Test', recipients=['KeithTt@vip.qq.com'])

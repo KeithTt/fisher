@@ -2,8 +2,6 @@ from flask_login import current_user
 
 from app.libs.enums import PendingStatus
 
-__author__ = 'KeithTt'
-
 
 class DriftCollection:
     def __init__(self, drifts, current_user_id):

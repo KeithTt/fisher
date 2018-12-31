@@ -8,8 +8,6 @@ from app.view_models.gift import MyGifts
 from . import web
 from flask_login import login_required, current_user
 
-__author__ = 'KeithTt'
-
 
 @web.route('/my/gifts')
 @login_required

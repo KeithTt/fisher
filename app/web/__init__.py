@@ -1,7 +1,5 @@
 from flask import Blueprint, render_template
 
-__author__ = 'KeithTt'
-
 # 蓝图 blueprint，蓝图是不能独立存在的，必须要插入flask的核心对象app里，每一个蓝图又能够插入很多视图函数
 # 原本是把视图函数直接注册到app核心对象
 
