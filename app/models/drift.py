@@ -1,4 +1,3 @@
-# from app.libs.enums import PendingStatus
 from sqlalchemy import Column, String, Integer, SmallInteger
 from app.libs.enums import PendingStatus
 from app.models.base import Base
@@ -6,8 +5,9 @@ from app.models.base import Base
 
 class Drift(Base):
     """
-        一次具体的交易信息
+    一次具体的交易信息
     """
+
     # __tablename__ = 'drift'
     #
     # def __init__(self):

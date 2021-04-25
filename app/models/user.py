@@ -17,6 +17,7 @@ from app.models.gift import Gift
 from app.models.wish import Wish
 from app.spider.yushu_book import YuShuBook
 
+
 class User(UserMixin, Base):
     # 默认情况下，sqlalchemy会用类名创建表名，可以使用内置属性__tablename__自定义表名
     # __tablename__ = 'user1'

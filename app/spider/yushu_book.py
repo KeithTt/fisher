@@ -6,7 +6,6 @@ from flask import current_app
 
 
 class YuShuBook:
-    
     isbn_url = 'http://t.yushu.im/v2/book/isbn/{}'
     keyword_url = 'http://t.yushu.im/v2/book/search?q={}&count={}&start={}'
 
@@ -23,7 +22,7 @@ class YuShuBook:
         if data:
             self.total = 1
             self.books.append(data)
-        
+
     def search_by_keyword(self, keyword, page=1):
         # 把page参数转换成count和start
         # 使用核心对象获取配置

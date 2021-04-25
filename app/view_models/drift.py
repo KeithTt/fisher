@@ -1,5 +1,3 @@
-from flask_login import current_user
-
 from app.libs.enums import PendingStatus
 
 

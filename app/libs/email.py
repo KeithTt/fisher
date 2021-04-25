@@ -1,10 +1,6 @@
-# pip3 install flask-mail
-
 from threading import Thread
-
 from flask import current_app, render_template
 from flask_mail import Message
-
 from app import mail
 
 
