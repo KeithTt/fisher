@@ -12,7 +12,7 @@ from app.models.user import User
 from app.models.wish import Wish
 from app.view_models.book import BookViewModel
 from app.view_models.drift import DriftCollection
-from . import web
+from app.web import web
 
 
 @web.route('/drift/<int:gid>', methods=['GET', 'POST'])
@@ -80,7 +80,6 @@ def mailed_drift(did):
         current_user.beans += current_app.config['BEANS_EVERY_DRIFT']
         gift = Gift.query.filter_by(id=drift.gift_id).first_or_404()
         gift.launched = True
-        # 不查询直接更新，这一步可以异步来操作
         Wish.query.filter_by(isbn=drift.isbn, uid=drift.requester_id, launched=False).update({Wish.launched: True})
     return redirect(url_for('web.pending'))
 

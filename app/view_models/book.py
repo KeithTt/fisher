@@ -40,8 +40,6 @@ class BookCollection:
 
 
 class _BookViewModel:
-    # 描述特征（类变量、实例变量）
-    # 行为（方法）
     @classmethod
     def package_single(cls, data, keyword):
         returned = {
@@ -63,7 +61,6 @@ class _BookViewModel:
         }
         if data:
             returned['total'] = data['total']
-            # 列表推导式简化代码
             returned['books'] = [cls.__cut_book_data(book) for book in data['books']]
         return returned
 

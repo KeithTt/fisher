@@ -5,9 +5,9 @@ from app.view_models.book import BookViewModel
 from . import web
 
 
-# 首页显示最近上传的礼物
 @web.route('/')
 def index():
+    """首页显示最近上传的礼物"""
     recent_gifts = Gift.recent()
     books = [BookViewModel(gift.book) for gift in recent_gifts]
     return render_template('index.html', books=books)

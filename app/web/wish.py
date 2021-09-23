@@ -6,7 +6,7 @@ from app.models.base import db
 from app.models.gift import Gift
 from app.models.wish import Wish
 from app.view_models.wish import MyWishes
-from . import web
+from app.web import web
 
 
 @web.route('/my/wish')

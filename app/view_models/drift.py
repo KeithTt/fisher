@@ -19,11 +19,8 @@ class DriftViewModel:
 
     @staticmethod
     def requester_or_gifter(drift, current_user_id):
-        if drift.requester_id == current_user_id:
-            you_are = 'requester'
-        else:
-            you_are = 'gifter'
-        return you_are
+        return 'requester' if drift.requester_id == current_user_id else 'gifter'
+
 
     def __parse(self, drift, current_user_id):
         you_are = self.requester_or_gifter(drift, current_user_id)

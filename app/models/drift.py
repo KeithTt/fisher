@@ -46,8 +46,3 @@ class Drift(Base):
     @pending.setter
     def pending(self, status):
         self._pending = status.value
-
-    # requester_id = Column(Integer, ForeignKey('user.id'))
-    # requester = relationship('User')
-    # gift_id = Column(Integer, ForeignKey('gift.id'))
-    # gift = relationship('Gift')

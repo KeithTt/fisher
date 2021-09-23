@@ -12,12 +12,9 @@ page = request.args['page']
 """
 
 
-# 继承Form基类
 class SearchForm(Form):
-    # 校验q的长度
-    q = StringField(validators=[DataRequired(), Length(min=1, max=30)])
-    # 校验page是否为正整数
-    page = IntegerField(validators=[NumberRange(min=1, max=99)], default=1)
+    q = StringField(validators=[DataRequired(), Length(min=1, max=30)])  # 校验字符串q的长度
+    page = IntegerField(validators=[NumberRange(min=1, max=99)], default=1)  # 校验页码page是否为正整数
 
 
 class DriftForm(Form):

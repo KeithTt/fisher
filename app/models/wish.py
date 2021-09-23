@@ -7,11 +7,9 @@ from app.spider.yushu_book import YuShuBook
 
 class Wish(Base):
     id = Column(Integer, primary_key=True)
-    # 引入user模型 外键建立关联
-    user = relationship('User')
+    user = relationship('User')  # 引入user模型 外键建立关联
     uid = Column(Integer, ForeignKey('user.id'))
-    # Gift里面的isbn是有可能重复的
-    isbn = Column(String(20), nullable=False)
+    isbn = Column(String(20), nullable=False)  # Gift里面的isbn是有可能重复的
     # book = relationship('Book')
     # bid = Column(Integer, ForeignKey('book.id'))
     launched = Column(Boolean, default=False)

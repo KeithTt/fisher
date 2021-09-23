@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy as _SQLAlchemy, BaseQuery
 from sqlalchemy import Column, SmallInteger, Integer
 
 
-# 定义一个子类，继承父类
+# 使用上下文管理器，设置自动提交事务
 class SQLAlchemy(_SQLAlchemy):
     @contextmanager
     def auto_commit(self):
@@ -21,24 +21,20 @@ class Query(BaseQuery):
     def filter_by(self, **kwargs):
         if 'status' not in kwargs.keys():
             kwargs['status'] = 1
-        # 实现原有的filter_by的逻辑
-        return super(Query, self).filter_by(**kwargs)
+        return super().filter_by(**kwargs)
 
 
-# 实例化一个对象
+# 实例化一个db对象
 db = SQLAlchemy(query_class=Query)
 
 
-# 定义一个基类模型，在基类模型里面继承db.Model，其他模型继承Base
+# 定义一个Base模型，在Base模型里面继承db.Model，其他模型继承Base
 class Base(db.Model):
-    # 不创建Base表，让Base模型仅作为基类模型
-    __abstract__ = True
+    __abstract__ = True  # 不创建Base表，让Base模型仅作为基类模型
     create_time = Column('create_time', Integer)
-    # 定义一个status属性控制数据是否被删除，默认为1表示不删除
-    status = Column(SmallInteger, default=1)
+    status = Column(SmallInteger, default=1)  # 定义一个status属性，控制数据是否被删除，默认为1表示不删除
 
     def __init__(self):
-        # 将执行时间赋值给create_time
         self.create_time = int(datetime.now().timestamp())
 
     def set_attrs(self, attrs_dict):

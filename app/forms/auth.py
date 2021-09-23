@@ -8,9 +8,8 @@ class RegisterForm(Form):
     password = PasswordField(validators=[DataRequired(message='密码不能为空，请输入你的密码'), Length(6, 32)])
     nickname = StringField(validators=[DataRequired(), Length(2, 10, message='昵称至少需要2个字符，最多10个字符')])
 
-    # 自定义验证器，必须以validate_开头，然后跟要校验的字段
     def validate_email(self, field):
-        # 查询数据库，返回第一条
+        # 自定义验证器，必须以validate_开头，然后跟要校验的字段
         if User.query.filter_by(email=field.data).first():
             raise ValidationError('邮箱已被注册')
 
@@ -29,8 +28,8 @@ class EmailForm(Form):
 
 
 class ResetPasswordForm(Form):
-    password1 = PasswordField('新密码', validators=[
-        DataRequired(), Length(6, 20, message='密码长度至少需要在6到20个字符之间'),
-        EqualTo('password2', message='两次输入的密码不相同')])
-    password2 = PasswordField('确认新密码', validators=[
-        DataRequired(), Length(6, 20)])
+    password1 = PasswordField('新密码', validators=[DataRequired(),
+                                                 Length(6, 20, message='密码长度至少需要在6到20个字符之间'),
+                                                 EqualTo('password2', message='两次输入的密码不相同')
+                                                 ])
+    password2 = PasswordField('确认新密码', validators=[DataRequired(), Length(6, 20)])

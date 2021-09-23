@@ -1,7 +1,4 @@
-# 获取URL
-
 from app.libs.httper import HTTP
-# 导入当前核心对象
 from flask import current_app
 
 
@@ -25,7 +22,6 @@ class YuShuBook:
 
     def search_by_keyword(self, keyword, page=1):
         # 把page参数转换成count和start
-        # 使用核心对象获取配置
         url = self.keyword_url.format(keyword, current_app.config['PER_PAGE'], self.caculate_start(page))
         result = HTTP.get(url)
         self.__fill_collection(result)
