@@ -3,8 +3,11 @@ from flask import current_app
 
 
 class YuShuBook:
-    isbn_url = 'http://t.yushu.im/v2/book/isbn/{}'
-    keyword_url = 'http://t.yushu.im/v2/book/search?q={}&count={}&start={}'
+    """
+    从 api 获取数据，并做初步处理
+    """
+    isbn_url = 'http://t.talelin.com/v2/book/isbn/{}'
+    keyword_url = 'http://t.talelin.com/v2/book/search?q={}&count={}&start={}'
 
     def __init__(self):
         self.total = 0
@@ -15,22 +18,23 @@ class YuShuBook:
         result = HTTP.get(url)
         self.__fill_single(result)
 
+    def search_by_keyword(self, keyword, page=1):
+        # 把page参数转换成count和start
+        url = self.keyword_url.format(keyword, current_app.config['PER_PAGE'], self.calculate_start(page))
+        result = HTTP.get(url)
+        self.__fill_collection(result)
+
     def __fill_single(self, data):
         if data:
             self.total = 1
             self.books.append(data)
 
-    def search_by_keyword(self, keyword, page=1):
-        # 把page参数转换成count和start
-        url = self.keyword_url.format(keyword, current_app.config['PER_PAGE'], self.caculate_start(page))
-        result = HTTP.get(url)
-        self.__fill_collection(result)
-
     def __fill_collection(self, data):
         self.total = data['total']
         self.books = data['books']
 
-    def caculate_start(self, page):
+    @staticmethod
+    def calculate_start(page):
         return (page - 1) * current_app.config['PER_PAGE']
 
     @property

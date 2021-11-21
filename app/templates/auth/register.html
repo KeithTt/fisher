@@ -17,19 +17,26 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 flex-vertical personal-detail">
                         <form action="{{ url_for('web.register') }}" method="post">
-                            <input style="width:100%" id="nickname" name="nickname"
+                            <input style="width:100%"
+                                   id="nickname"
+                                   name="nickname"
                                    type="text"
                                    placeholder="昵称"
                                    class="none-input"
-                                   value="{{ form.data['nickname'] | default('',true) }}">
-                            <input style="width:100%" id="email" name="email" type="text"
+                                   value="{{ form.data['nickname'] | default('', true) }}">
+                            <input style="width:100%"
+                                   id="email"
+                                   name="email"
+                                   type="text"
                                    placeholder="邮箱"
                                    class="none-input"
-                                   value="{{ form.data['email'] | default('',true) }}">
-                            <input id="password" style="width:100%"
+                                   value="{{ form.data['email'] | default('', true) }}">
+                            <input style="width:100%"
+                                   id="password"
                                    name="password"
+                                   type="password"
                                    placeholder="密码"
-                                   class="none-input" type="password">
+                                   class="none-input">
                             <input style="margin-top:15px;" id="btn-submit" type="submit"
                                    class="btn btn-big btn-block" value="注册">
                         </form>
@@ -37,8 +44,7 @@
                 </div>
                 <div style="margin-top:30px;" class="row">
                     <div class="col-md-8 text-center col-md-offset-2">
-                        <span class="description-font">已有账号？</span><a
-                            href="{{ url_for('web.login') }}">登录</a>
+                        <span class="description-font">已有账号？</span><a href="{{ url_for('web.login') }}">登录</a>
                     </div>
                 </div>
             </div>

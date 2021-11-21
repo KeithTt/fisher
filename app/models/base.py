@@ -44,10 +44,7 @@ class Base(db.Model):
 
     @property
     def create_datetime(self):
-        if self.create_time:
-            return datetime.fromtimestamp(self.create_time)
-        else:
-            return None
+        return datetime.fromtimestamp(self.create_time) if self.create_time else None
 
     def delete(self):
         self.status = 0

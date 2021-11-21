@@ -5,10 +5,10 @@ from wtforms.validators import Length, NumberRange, DataRequired, Regexp
 使用wtforms校验参数是否合规
 
 至少要有一个字符，长度限制
-q = request.args['q']
+q = request.args.get('q')
 
 正整数，最大值限制
-page = request.args['page']
+page = request.args.get('page')
 """
 
 

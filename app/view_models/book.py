@@ -9,6 +9,9 @@
 
 
 class BookViewModel:
+    """
+    处理单本书
+    """
     def __init__(self, book):
         self.title = book['title']
         self.publisher = book['publisher']
@@ -28,6 +31,9 @@ class BookViewModel:
 
 
 class BookCollection:
+    """
+    集合多本书
+    """
     def __init__(self):
         self.total = 0
         self.books = []
@@ -37,58 +43,3 @@ class BookCollection:
         self.total = yushu_book.total
         self.keyword = keyword
         self.books = [BookViewModel(book) for book in yushu_book.books]
-
-
-class _BookViewModel:
-    @classmethod
-    def package_single(cls, data, keyword):
-        returned = {
-            'books': [],
-            'total': 0,
-            'keyword': keyword
-        }
-        if data:
-            returned['total'] = 1
-            returned['books'] = [cls.__cut_book_data(data)]
-        return returned
-
-    @classmethod
-    def package_collection(cls, data, keyword):
-        returned = {
-            'books': [],
-            'total': 0,
-            'keyword': keyword
-        }
-        if data:
-            returned['total'] = data['total']
-            returned['books'] = [cls.__cut_book_data(book) for book in data['books']]
-        return returned
-
-    @classmethod
-    def __cut_book_data(cls, data):
-        book = {
-            'title': data['title'],
-            'publisher': data['publisher'],
-            'author': '、'.join(data['author']),
-            'pages': data['pages'] or '',
-            'price': data['price'],
-            'summary': data['summary'] or '',
-            'image': data['image']
-        }
-        return book
-
-    # @classmethod
-    # def __cut_book_data(cls, data):
-    #     books = []
-    #     for book in data['books']:
-    #         r = {
-    #             'title': data['title'],
-    #             'publisher': data['publisher'],
-    #             'author': '、'.join(data['author']),
-    #             'pages': data['pages'],
-    #             'price': data['price'],
-    #             'summary': data['summary'],
-    #             'image': data['image']
-    #         }
-    #         books.append(r)
-    #     return books

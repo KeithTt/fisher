@@ -3,13 +3,11 @@ from flask import current_app
 from sqlalchemy import Column, Integer, String, Boolean, Float
 from werkzeug.security import generate_password_hash, check_password_hash
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
-
+from flask_login import UserMixin
 from app import login_manager
 from app.libs.enums import PendingStatus
 from app.libs.helper import is_isbn_or_key
 from app.models.base import Base, db
-from flask_login import UserMixin
-
 from app.models.drift import Drift
 from app.models.gift import Gift
 from app.models.wish import Wish
@@ -17,8 +15,10 @@ from app.spider.yushu_book import YuShuBook
 
 
 class User(UserMixin, Base):
-    # 默认情况下，sqlalchemy会用类名创建表名，可以使用内置属性__tablename__自定义表名
-    # __tablename__ = 'user1'
+    """
+    继承 flask_login 的 UserMixin 类
+    """
+    # __tablename__ = 'user1'  # 默认情况下，sqlalchemy 会用类名创建表名，可以使用内置属性__tablename__自定义表名
     id = Column(Integer, primary_key=True)
     nickname = Column(String(24), nullable=False)
     phone_number = Column(String(18), unique=True)
@@ -41,20 +41,9 @@ class User(UserMixin, Base):
     def password(self, raw):
         self._password = generate_password_hash(raw)
 
-    def can_send_drift(self):
-        if self.beans < 1:
-            return False
-        success_gifts_count = Gift.query.filter_by(uid=self.id, launched=True).count()
-        success_receive_count = Drift.query.filter_by(requester_id=self.id, pending=PendingStatus.Success).count()
-        return True if floor(success_receive_count / 2) <= floor(success_gifts_count) else False
-
     def check_password(self, raw):
         """验证密码是否正确"""
         return check_password_hash(self._password, raw)
-
-    # 返回一个可以表示用户身份的字段，这个方法包含在UserMixin里面
-    # def get_id(self):
-    #     return self.id
 
     def can_save_to_list(self, isbn):
         if is_isbn_or_key(isbn) != 'isbn':
@@ -63,11 +52,16 @@ class User(UserMixin, Base):
         yushu_book.search_by_isbn(isbn)  # 查询是否存在这个isbn
         if not yushu_book.first:
             return False
-        # 不允许一个用户同时赠送多本相同的书
-        # 对于同一本书，一个用户不可能同时成为赠送者和索要者
-        gifting = Gift.query.filter_by(uid=self.id, isbn=isbn, launched=False).first()
-        wishing = Wish.query.filter_by(uid=self.id, isbn=isbn, launched=False).first()
+        gifting = Gift.query.filter_by(uid=self.id, isbn=isbn, launched=False).first()  # 不允许一个用户同时赠送多本相同的书
+        wishing = Wish.query.filter_by(uid=self.id, isbn=isbn, launched=False).first()  # 对于同一本书，一个用户不可能同时成为赠送者和索要者
         return True if not gifting and not wishing else False  # 既不在赠送清单，也不在心愿清单才能添加
+
+    def can_send_drift(self):
+        if self.beans < 1:
+            return False
+        success_gifts_count = Gift.query.filter_by(uid=self.id, launched=True).count()
+        success_receive_count = Drift.query.filter_by(requester_id=self.id, pending=PendingStatus.Success).count()
+        return True if floor(success_receive_count / 2) <= floor(success_gifts_count) else False
 
     def generate_token(self, expiration=600):
         s = Serializer(current_app.config['SECRET_KEY'], expiration)
@@ -75,9 +69,9 @@ class User(UserMixin, Base):
 
     @staticmethod
     def reset_password(token, new_password):
-        s = Serializer(current_app.config['SECRET_KEY'])  # 读取用户信息 反序列化
+        s = Serializer(current_app.config['SECRET_KEY'])
         try:
-            data = s.loads(token.encode('utf-8'))
+            data = s.loads(token.encode('utf-8'))  # 读取用户信息，反序列化
         except:
             return False
         uid = data.get('id')

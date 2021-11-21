@@ -4,6 +4,7 @@ from app.models.user import User
 from . import web
 from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_user, logout_user
+from app.libs.email import send_mail
 
 
 @web.route('/register', methods=['GET', 'POST'])
@@ -25,10 +26,10 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         if user and user.check_password(form.password.data):
             login_user(user, remember=True)  # remember参数表示记住cookie信息，默认保存时间是365天。默认情况下cookie是一次性的，即关闭浏览器就消失
-            next = request.args.get('next')  # 获取next的查询参数
+            next = request.args.get('next')
             if not next or not next.startswith('/'):
                 next = url_for('web.index')
-            return redirect(next)  # 登陆成功后跳转返回到之前的页面
+            return redirect(location=next)  # 登陆成功后跳转返回到之前的页面
         else:
             flash('账号不存在或密码错误')
     return render_template('auth/login.html', form=form)
@@ -41,14 +42,11 @@ def forget_password_request():
         if form.validate():
             account_email = form.email.data
             user = User.query.filter_by(email=account_email).first_or_404()
-            from app.libs.email import send_mail
             send_mail(form.email.data, '重置密码', 'email/reset_password.html', user=user, token=user.generate_token())
             flash('一封邮件已发送到您的邮箱' + account_email + '请查收邮件进行重置密码操作')
             redirect(url_for('web.index'))
     return render_template('auth/forget_password_request.html', form=form)
 
-
-# 单元测试
 
 @web.route('/reset/password/<token>', methods=['GET', 'POST'])
 def forget_password(token):

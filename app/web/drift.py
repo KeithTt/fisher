@@ -1,7 +1,6 @@
 from flask import flash, redirect, url_for, render_template, request, current_app
 from flask_login import login_required, current_user
 from sqlalchemy import desc, or_
-
 from app.forms.book import DriftForm
 from app.libs.email import send_mail
 from app.libs.enums import PendingStatus
@@ -12,7 +11,7 @@ from app.models.user import User
 from app.models.wish import Wish
 from app.view_models.book import BookViewModel
 from app.view_models.drift import DriftCollection
-from app.web import web
+from . import web
 
 
 @web.route('/drift/<int:gid>', methods=['GET', 'POST'])

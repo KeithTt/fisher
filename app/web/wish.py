@@ -1,12 +1,11 @@
 from flask import flash, redirect, url_for, render_template
 from flask_login import login_required, current_user
-
 from app.libs.email import send_mail
 from app.models.base import db
 from app.models.gift import Gift
 from app.models.wish import Wish
 from app.view_models.wish import MyWishes
-from app.web import web
+from . import web
 
 
 @web.route('/my/wish')

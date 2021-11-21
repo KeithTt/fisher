@@ -1,9 +1,9 @@
 from flask import current_app
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, desc, func
-from app.models.base import db, Base
 from sqlalchemy.orm import relationship
-from app.spider.yushu_book import YuShuBook
+from app.models.base import db, Base
 from app.models.wish import Wish
+from app.spider.yushu_book import YuShuBook
 
 
 # EachGiftWishCount = namedtuple('EachGiftWishCount', ['count', 'isbn'])
@@ -11,7 +11,7 @@ from app.models.wish import Wish
 class Gift(Base):
     id = Column(Integer, primary_key=True)
     user = relationship('User')
-    uid = Column(Integer, ForeignKey('user.id'))
+    uid = Column(Integer, ForeignKey('user.id'))  # 关联 user 表，将用户 id 作为外键
     isbn = Column(String(20), nullable=False)
     launched = Column(Boolean, default=False)  # 是否被赠送出去
 
