@@ -11,7 +11,7 @@ from app.view_models.book import BookViewModel, BookCollection
 
 
 # 使用蓝图注册视图函数
-@web.route('/book/search')
+@web.route(rule='/book/search')
 def search():
     form = SearchForm(request.args)
     books = BookCollection()
@@ -43,12 +43,12 @@ def search():
     return render_template('search_result.html', books=books)
 
 
-@web.route('/book/<isbn>/detail')
+@web.route(rule='/book/<isbn>/detail')
 def book_detail(isbn):
     has_in_gifts = False
     has_in_wishes = False
 
-    # 取书籍的详情数据
+    # 获取书籍的详情数据
     yushu_book = YuShuBook()
     yushu_book.search_by_isbn(isbn)
     book = BookViewModel(yushu_book.first)
@@ -60,8 +60,8 @@ def book_detail(isbn):
         if Wish.query.filter_by(uid=current_user.id, isbn=isbn, launched=False).first():
             has_in_wishes = True
 
-    trade_gifts = Gift.query.filter_by(isbn=isbn, launched=False).all()  # 查询出所有赠送者的信息
-    trade_wishes = Wish.query.filter_by(isbn=isbn, launched=False).all()  # 查询出所有索要者的信息
+    trade_gifts = Gift.query.filter_by(isbn=isbn, launched=False).all()  # 查询出所有赠送者的礼物信息
+    trade_wishes = Wish.query.filter_by(isbn=isbn, launched=False).all()  # 查询出所有索要者的心愿信息
 
     trade_gifts_model = TradeInfo(trade_gifts)
     trade_wishes_model = TradeInfo(trade_wishes)

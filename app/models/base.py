@@ -16,11 +16,11 @@ class SQLAlchemy(_SQLAlchemy):
             raise e
 
 
-# 重写filter_by函数
+# 重写 filter_by 函数
 class Query(BaseQuery):
     def filter_by(self, **kwargs):
         if 'status' not in kwargs.keys():
-            kwargs['status'] = 1
+            kwargs['status'] = 1  # 将 status 字段的值默认设置为 1
         return super().filter_by(**kwargs)
 
 

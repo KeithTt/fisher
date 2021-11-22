@@ -12,9 +12,8 @@ class TradeInfo:
     @staticmethod
     def __map_to_trade(single):
         """处理单个礼物或者心愿"""
-        time = single.create_datetime.strftime('%Y-%m-%d') if single.create_time else '未知'
-        return dict(
-            user_name=single.user.nickname,
-            time=time,
-            id=single.id
-        )
+        return {
+            'user_name': single.user.nickname,
+            'time': single.create_datetime.strftime('%Y-%m-%d') if single.create_time else '未知',
+            'id': single.id
+        }
