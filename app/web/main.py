@@ -6,7 +6,9 @@ from . import web
 
 @web.route('/')
 def index():
-    """首页显示最近上传的礼物"""
+    """
+    首页显示最近上传的礼物
+    """
     recent_gifts = Gift.recent()
     books = [BookViewModel(gift.book) for gift in recent_gifts]
     return render_template('index.html', books=books)
@@ -14,4 +16,4 @@ def index():
 
 @web.route('/personal')
 def personal_center():
-    pass
+    return render_template('todo.html')

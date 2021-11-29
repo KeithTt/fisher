@@ -9,9 +9,13 @@ class Wish(Base):
     user = relationship('User')  # 引入user模型 外键建立关联
     uid = Column(Integer, ForeignKey('user.id'))
     isbn = Column(String(20), nullable=False)  # Gift里面的isbn是有可能重复的
-    # book = relationship('Book')
-    # bid = Column(Integer, ForeignKey('book.id'))
     launched = Column(Boolean, default=False)
+
+    @property
+    def book(self):
+        yushu_book = YuShuBook()
+        yushu_book.search_by_isbn(self.isbn)
+        return yushu_book.first
 
     @classmethod
     def get_user_wishes(cls, uid):
@@ -29,9 +33,3 @@ class Wish(Base):
         # 上面返回的结果是一个元祖列表，这里将结果转换成字典列表
         count_list = [{'count': w[0], 'isbn': w[1]} for w in count_list]
         return count_list
-
-    @property
-    def book(self):
-        yushu_book = YuShuBook()
-        yushu_book.search_by_isbn(self.isbn)
-        return yushu_book.first

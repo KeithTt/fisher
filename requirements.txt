@@ -8,3 +8,5 @@ itsdangerous
 flask-mail
 cymysql
 flask_login
+gunicorn
+gevent

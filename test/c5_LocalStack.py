@@ -1,7 +1,5 @@
 from werkzeug.local import LocalStack
 
-# push、pop、top
-
 # 实例化一个对象
 s = LocalStack()
 
