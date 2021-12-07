@@ -10,3 +10,4 @@ cymysql
 flask_login
 gunicorn
 gevent
+Flask-RBAC
