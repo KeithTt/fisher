@@ -4,7 +4,7 @@ from app.view_models.book import BookViewModel
 from . import web
 
 
-@web.route('/')
+@web.route(rule='/')
 def index():
     """
     首页显示最近上传的礼物
@@ -14,6 +14,6 @@ def index():
     return render_template('index.html', books=books)
 
 
-@web.route('/personal')
+@web.route(rule='/personal')
 def personal_center():
     return render_template('todo.html')

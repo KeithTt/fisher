@@ -21,7 +21,6 @@ class DriftViewModel:
     def requester_or_gifter(drift, current_user_id):
         return 'requester' if drift.requester_id == current_user_id else 'gifter'
 
-
     def __parse(self, drift, current_user_id):
         you_are = self.requester_or_gifter(drift, current_user_id)
         pending_status = PendingStatus.pending_str(drift.pending, you_are)

@@ -1,0 +1,24 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/opt/fisher
+ExecStart=/usr/local/python3/bin/gunicorn --preload \
+	--worker-class gevent \
+    --bind 0.0.0.0:8088 \
+    --workers 2 \
+    --pid fisher.pid \
+    --reload \
+    --log-level debug \
+    fisher:app
+ExecReload=/bin/kill -s HUP $MAINPID
+KillMode=mixed
+TimeoutStopSec=5
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

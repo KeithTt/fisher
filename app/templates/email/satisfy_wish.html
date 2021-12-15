@@ -1,4 +1,4 @@
-<p><stong>亲爱的 {{ wish.user.nickname }},</stong></p>
+<p><strong>亲爱的 {{ wish.user.nickname }},</strong></p>
 <p>{{ gift.user.nickname }} 有一本《{{ wish.book.title }}》可以赠送给你</p>
 <p>点击<a
         href="{{ url_for('web.send_drift', gid=gift.id, _external=True) }}">这里</a>填写书籍邮寄地址，

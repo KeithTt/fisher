@@ -4,6 +4,7 @@ flask-sqlalchemy
 requests
 WTForms
 Werkzeug
+email-validator
 itsdangerous
 flask-mail
 cymysql

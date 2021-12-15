@@ -2,7 +2,7 @@
 
 # python3.9 fisher.py
 
-gunicorn --worker-class gevent \
+gunicorn --preload --worker-class gevent \
     --bind 0.0.0.0:8088 \
     --workers 2 \
     --pid fisher.pid \

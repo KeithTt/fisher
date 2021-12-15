@@ -9,7 +9,7 @@ class Drift(Base):
     """
 
     # __tablename__ = 'drift'
-    #
+
     # def __init__(self):
     #     self.pending = PendingStatus.waiting
     #     super(Drift, self).__init__()

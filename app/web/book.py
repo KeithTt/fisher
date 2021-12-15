@@ -38,7 +38,7 @@ def search():
     else:
         # return jsonify({'msg': '参数校验失败'})
         # return jsonify(form.errors)  # 使用form的errors属性返回错误信息
-        flash('搜索的关键字不符合要求，请重新输入关键字')  # 使用消息闪现返回错误提示
+        flash(message='搜索的关键字不符合要求，请重新输入关键字')  # 使用消息闪现返回错误提示
 
     return render_template('search_result.html', books=books)
 

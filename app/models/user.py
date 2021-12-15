@@ -64,19 +64,20 @@ class User(UserMixin, Base):
         return True if floor(success_receive_count / 2) <= floor(success_gifts_count) else False
 
     def generate_token(self, expiration=600):
-        s = Serializer(current_app.config['SECRET_KEY'], expiration)
+        s = Serializer(secret_key=current_app.config['SECRET_KEY'], expires_in=expiration)
         return s.dumps({'id': self.id}).decode('utf-8')  # 写入用户信息到序列化器
 
     @staticmethod
     def reset_password(token, new_password):
-        s = Serializer(current_app.config['SECRET_KEY'])
+        s = Serializer(secret_key=current_app.config['SECRET_KEY'])
         try:
-            data = s.loads(token.encode('utf-8'))  # 读取用户信息，反序列化
+            """token伪造或者过期会抛异常"""
+            data = s.loads(s=token.encode('utf-8'))  # 读取用户信息，反序列化
         except:
             return False
         uid = data.get('id')
         with db.auto_commit():
-            user = User.query.get(uid)  # 通过主键获取用户模型
+            user = User.query.get_or_404(uid)  # 通过主键获取用户模型
             user.password = new_password  # 修改密码
         return True
 
@@ -93,4 +94,4 @@ class User(UserMixin, Base):
 @login_manager.user_loader
 def get_user(uid):
     """通过uid返回用户模型"""
-    return User.query.get(str(uid))
+    return User.query.get_or_404(str(uid))
