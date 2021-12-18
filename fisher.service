@@ -1,6 +1,7 @@
 [Unit]
 Description=gunicorn daemon
 After=network.target
+# https://docs.gunicorn.org/en/stable/deploy.html#systemd
 
 [Service]
 Type=simple
@@ -13,6 +14,8 @@ ExecStart=/usr/local/python3/bin/gunicorn --preload \
     --workers 2 \
     --pid fisher.pid \
     --reload \
+    --access-logfile access.log \
+    --error-logfile error.log \
     --log-level debug \
     fisher:app
 ExecReload=/bin/kill -s HUP $MAINPID

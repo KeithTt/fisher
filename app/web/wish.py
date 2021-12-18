@@ -9,6 +9,7 @@ from . import web
 
 
 @web.route(rule='/my/wish')
+@login_required
 def my_wish():
     uid = current_user.id
     wishes_of_mine = Wish.get_user_wishes(uid)
