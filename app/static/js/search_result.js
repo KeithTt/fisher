@@ -17,8 +17,8 @@ class Pagination {
             onPageClick: self.that.onPageClick,
             first: '首页',
             last: '尾页',
-            next:'后页>',
-            prev:'<前页'
+            next: '后页>',
+            prev: '<前页'
         })
     }
 
@@ -26,8 +26,7 @@ class Pagination {
         var page = getQueryString('page')
         if (!page) {
             page = 1
-        }
-        else{
+        } else {
             page = parseInt(page)
         }
         self.that.keyword = $('#keyword').text()

@@ -14,19 +14,17 @@ class Auth {
         if (ok) {
             var fields = getAllFormFields('register-form')
             HTTP.post('/register', fields, (msg) => {
-                if (msg == 'go to index') {
+                if (msg === 'go to index') {
                     window.location.href = '/'
                 }
             }, (result) => {
                 let msg = result.responseJSON
-                if (msg.code == 10080) {
+                if (msg.code === 10080) {
                     self.that.reflectToView('#email', msg.msg)
-                }
-                else {
-                    if (msg.code == 10081) {
+                } else {
+                    if (msg.code === 10081) {
                         self.that.reflectToView('#nickname', msg.msg)
-                    }
-                    else {
+                    } else {
                         alert('服务器内部错误')
                     }
                 }
@@ -44,7 +42,7 @@ class Auth {
     validate(email, password) {
         var v = new Validator()
         var rightEmail = v.isEmail(email)
-        var rightPassword = self.that.isCorrcetPassword(password)
+        var rightPassword = self.that.isCorrectPassword(password)
         if (!rightEmail) {
             self.that.reflectToView('#email', '请输入正确的邮箱地址')
             return false
@@ -56,16 +54,11 @@ class Auth {
         return true
     }
 
-    isCorrcetPassword(password) {
+    isCorrectPassword(password) {
         var v = new Validator()
         var minPassword = v.minLength(password, 6)
         var maxpassword = v.maxLength(password, 30)
-        if (minPassword && maxpassword) {
-            return true
-        }
-        else {
-            return false
-        }
+        return !!(minPassword && maxpassword);
     }
 
     reflectToView(id, message) {
